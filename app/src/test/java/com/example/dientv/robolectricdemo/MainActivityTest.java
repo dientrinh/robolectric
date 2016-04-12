@@ -66,6 +66,11 @@ public class MainActivityTest {
 //        Robolectric.flushBackgroundThreadScheduler();
          ShadowLooper.runUiThreadTasks();
     }
+    @Test
+    public void testMultiple() throws Exception {
+        activity= Robolectric.setupActivity(MainActivity.class);
+        assertEquals(6, activity.multiple(3, 2));
+    }
 
     @Test
     public void test_mock() {
@@ -75,5 +80,6 @@ public class MainActivityTest {
         Whitebox.setInternalState(mSampleA, "mSampleB", sampleB);
        // Assert.assertEquals("B", mSampleA.getStr());
         assertThat("B", equalTo(mSampleA.getStr()));
+        assertThat("B", equalTo(sampleB.sampleb()));
     }
 }
